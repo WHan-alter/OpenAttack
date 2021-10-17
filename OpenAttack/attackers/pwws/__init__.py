@@ -102,7 +102,8 @@ class PWWSAttacker(ClassificationAttacker):
         x_hat_raw = []
         import pdb; pdb.set_trace()
         """
-        
+        Build the masks with the sentence
+        find out which token matters to the final classification results
         """
 
         for i in range(len(sent)):
