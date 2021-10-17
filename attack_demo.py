@@ -1,5 +1,8 @@
 import OpenAttack as oa
 import datasets # use the Hugging Face's datasets library
+from model_utils import ESM_value_prediction_model
+import torch
+import esm
 
 ### map the continous value to categorical 
 # change the SST dataset into 2-class
@@ -16,6 +19,15 @@ Could be implemented by adding the openattack classifier
 """
 
 # choose a trained victim classification model
+
+esm_path="/ibex/scratch/hanw/projects_data/ESM_models/ESM-1b/esm1b_t33_650M_UR50S.pt"
+model_test = ESM_value_prediction_model(esm_path=esm_path,freeze_bert=True)
+
+model_test.load_state_dict(torch.load('/home/hanw/projects/attack_model/regression_model/esm1b_covid_dms_1.pt'))
+
+alphabet = esm.pretrained.load_model_and_alphabet_local(esm_path)[1]
+
+import pdb; pdb.set_trace()
 victim = oa.DataManager.loadVictim("BERT.SST")
 
 """
