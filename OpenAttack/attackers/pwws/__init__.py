@@ -69,7 +69,7 @@ class PWWSAttacker(ClassificationAttacker):
         
     def attack(self, victim: Classifier, sentence : str, goal : ClassifierGoal):
         x_orig = sentence.lower()
-
+        
 
         x_orig = self.tokenizer.tokenize(x_orig)
         poss =  list(map(lambda x: x[1], x_orig)) 
@@ -100,6 +100,11 @@ class PWWSAttacker(ClassificationAttacker):
     
     def get_saliency(self, clsf, sent, goal : ClassifierGoal):
         x_hat_raw = []
+        import pdb; pdb.set_trace()
+        """
+        
+        """
+
         for i in range(len(sent)):
             left = sent[:i]
             right = sent[i + 1:]
